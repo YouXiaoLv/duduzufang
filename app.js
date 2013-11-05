@@ -5,11 +5,12 @@
 
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
+var house = require('./routes/house');
 var http = require('http');
 var path = require('path');
 var stylus = require('stylus');
 var nib = require('nib');
+var HouseProvider = require('./db/HouseProvider.js').HouseProvider;
 
 var app = express();
 
@@ -41,8 +42,21 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+// Routes
+
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/house/add', house.add); 
+
+// save new house
+app.post('/house/add', function(req, res) {
+  HouseProvider.save({
+    title: req.param('title'),
+    price: req.param('price'),
+    url: req.param('url')
+  }, function(error, houses) {
+    res.redirect('/');
+  });
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

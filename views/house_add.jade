@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  form(method='post').house-add
+    ol
+      li 
+        span.label 标题:
+        input(type='text', name='title')
+      li
+        span.label 价格:
+        input(type='number', name='price')
+      li
+        span.label 原文URL:
+        input(type='url', name='url')
+      li
+        input(type='submit', value='添加')
+  p
+    a(href='/')!='返回'
+
+block sidebar
+  .widget
+    p
+      | 在这里添加一个新的租房信息。
+

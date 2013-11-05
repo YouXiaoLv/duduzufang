@@ -1,8 +1,18 @@
 extends layout
 block content
-  p
+  p 
     | 感谢OO的支持，嘟嘟租房网站正式成立了。
     | 从今天开始，边学Nodejs边建站。
+  table#houses
+    - each house in houses
+      tr.house
+        td.title
+          a(href=house.url).house!=house.title
+        td.price=house.price
+        td.create_at=house.create_at
+  p
+    a(href="/house/add") 添加房源信息
+  
 block sidebar
   .widget
     h1 今日提示
