@@ -1,24 +1,22 @@
 extends layout
 
+block headline
+  p 在这里添加房源信息
+
 block content
-  form(method='post').house-add
-    ol
-      li 
-        span.label 标题:
-        input(type='text', name='title')
-      li
-        span.label 价格:
-        input(type='number', name='price')
-      li
-        span.label 原文URL:
-        input(type='url', name='url')
-      li
-        input(type='submit', value='添加')
-  p
-    a(href='/')!='返回'
+  form(method='post', role='form')
+    .form-group
+      label(for='titleInput')  标题:
+      input#titleInput.form-control(type='text', name='title', placeholder='输入标题')
+    .form-group
+      label(for='priceInput') 价格:
+      input#priceInput.form-control(type='number', name='price', placeholder='价格')
+    .form-group
+      label(for='urlInput') 原文URL:
+      input#urlInput.form-control(type='url', name='url')
+    button.btn.btn-default(type='submit') 添加
 
 block sidebar
-  .widget
     p
-      | 在这里添加一个新的租房信息。
+      | 困困~~
 

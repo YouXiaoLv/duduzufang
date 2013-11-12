@@ -1,9 +1,12 @@
 extends layout
-block content
+block headline
   p 
     | 感谢OO的支持，嘟嘟租房网站正式成立了。
     | 从今天开始，边学Nodejs边建站。
-  table#houses
+
+block content
+  h1 房源
+  table.table.table-hover
     - each house in houses
       tr.house
         td.title
@@ -15,6 +18,5 @@ block content
   
 block sidebar
   .widget
-    h1 今日提示
     p
       | 晚睡早起，效率高。
